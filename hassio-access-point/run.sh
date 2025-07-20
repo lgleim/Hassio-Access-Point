@@ -59,7 +59,9 @@ ip link add name br0 type bridge
 logger "Stopping Network inferfaces" 1
 ip link set $WIFI_INTERFACE down
 ip link set $ETH_INTERFACE down
+ip link set br0 down
 logger "Assigning to bridge" 1
+iw dev $WIFI_INTERFACE set 4addr on
 ip link set $ETH_INTERFACE master br0
 ip link set $WIFI_INTERFACE master br0
 logger "Starting bridge" 1
