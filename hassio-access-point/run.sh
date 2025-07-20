@@ -38,7 +38,7 @@ for i in $bool_configs ; do
 done
 
 # Setup signal handlers
-trap 'term_handler' SIGTERM
+trap 'term_handler' EXIT
 
 SSID=$(bashio::config "ssid")
 WPA_PASSPHRASE=$(bashio::config "wpa_passphrase")
