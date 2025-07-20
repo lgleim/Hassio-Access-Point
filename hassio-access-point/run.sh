@@ -54,12 +54,17 @@ echo "Starting Hass.io Access Point Addon"
 
 # Setup interface
 logger "# Setup interface:" 1
+logger "Creating Bridge" 1
 ip link add name br0 type bridge
+logger "Stopping Network inferfaces" 1
 ip link set $WIFI_INTERFACE down
 ip link set $ETH_INTERFACE down
+logger "Assigning to bridge" 1
 ip link set $ETH_INTERFACE master br0
 ip link set $WIFI_INTERFACE master br0
+logger "Starting bridge" 1
 ip link set br0 up
+logger "Starting interfaces" 1
 ip link set $ETH_INTERFACE up
 ip link set $WIFI_INTERFACE up
 
