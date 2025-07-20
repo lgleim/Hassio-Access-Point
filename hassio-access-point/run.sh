@@ -2,7 +2,7 @@
 
 # SIGTERM-handler this funciton will be executed when the container receives the SIGTERM signal (when stopping)
 term_handler(){
-	logger "Stopping Hass.io Access Point" 0
+    logger "Stopping Hass.io Access Point" 0
     ip link set $WIFI_INTERFACE down
     ip link set $ETH_INTERFACE down
     ip link set br0 down
@@ -11,16 +11,16 @@ term_handler(){
     ip link delete br0 type bridge
     ip link set $ETH_INTERFACE up
     ip link set $WIFI_INTERFACE up
-	exit 0
+    exit 0
 }
 
 # Logging function to set verbosity of output to addon log
 logger(){
     msg=$1
     level=$2
-    if [ $DEBUG -ge $level ]; then
-        echo $msg
-    fi
+    #if [ $DEBUG -ge $level ]; then
+    echo $msg
+    #fi
 }
 
 CONFIG_PATH=/data/options.json
@@ -53,7 +53,7 @@ HOSTAPD_CONFIG_OVERRIDE=$(bashio::config 'hostapd_config_override' )
 echo "Starting Hass.io Access Point Addon"
 
 # Setup interface
-#logger "# Setup interface:" 1
+logger "# Setup interface:" 1
 ip link add name br0 type bridge
 ip link set $WIFI_INTERFACE down
 ip link set $ETH_INTERFACE down
