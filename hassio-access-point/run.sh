@@ -70,7 +70,7 @@ logger "Starting interfaces" 1
 ip link set $ETH_INTERFACE up
 ip link set $WIFI_INTERFACE up
 
-iw reg set DE
+iw reg set AN
 
 # Enforces required env variables
 required_vars=(ssid wpa_passphrase)
