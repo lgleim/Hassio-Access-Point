@@ -62,6 +62,7 @@ ip link set $ETH_INTERFACE down
 ip link set br0 down
 logger "Assigning to bridge" 1
 iw dev $WIFI_INTERFACE set 4addr on
+iw reg set AF
 ip link set $ETH_INTERFACE master br0
 ip link set $WIFI_INTERFACE master br0
 logger "Starting bridge" 1
@@ -69,8 +70,6 @@ ip link set br0 up
 logger "Starting interfaces" 1
 ip link set $ETH_INTERFACE up
 ip link set $WIFI_INTERFACE up
-
-iw reg set AF
 
 # Enforces required env variables
 required_vars=(ssid wpa_passphrase)
